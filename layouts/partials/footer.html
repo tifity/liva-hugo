@@ -6,9 +6,9 @@
         <h2>{{ .Site.Params.newsletter.title | markdownify }}</h2>
         <p class="text-light px-md-5 py-4 border-left border-right border-primary">
           {{ .Site.Params.newsletter.content | markdownify }}</p>
-        <form action="#" class="row justify-content-center">
+        <form method="POST" action="{{.Site.Params.newsletter.action}}" class="row justify-content-center">
           <div class="input-group col-md-8">
-            <input type="text" class="form-control" placeholder="Your Email Address">
+            <input type="text" name="email" class="form-control" placeholder="Your Email Address" required>
             <div class="input-group-append">
               <button class="input-group-text btn btn-primary">Subscribe</button>
             </div>
@@ -26,7 +26,7 @@
       <div class="col-12 text-center mb-5">
         <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}"></a>
       </div>
-      {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}         
+      {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}
       <div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Contact Me</h6>
         <ul class="list-unstyled">
@@ -34,10 +34,10 @@
           <li class="mb-3"><a class="text-dark" href="tel:{{ .Site.Params.mobile }}"><i
                 class="ti-mobile mr-3 text-primary"></i>{{ .Site.Params.mobile }}</a></li>
           {{ end }}
-          {{ if .Site.Params.location }}           
+          {{ if .Site.Params.location }}
           <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>{{ .Site.Params.location }}</li>
           {{ end }}
-          {{ if .Site.Params.email }}           
+          {{ if .Site.Params.email }}
           <li class="mb-3"><a class="text-dark" href="mailto:{{ .Site.Params.email }}"><i
                 class="ti-email mr-3 text-primary"></i>{{ .Site.Params.email }}</a>
           {{ end }}
